@@ -1,7 +1,3 @@
-addEventListener('fetch', event => {
-  event.respondWith(handleRequest(event.request));
-});
-
 async function handleRequest(request) {
   const url = new URL(request.url);
   const pathname = url.pathname;
@@ -42,4 +38,8 @@ async function handleRequest(request) {
     console.error('Failed to fetch:', error);
     return new Response('Internal Server Error', { status: 500 });
   }
+}
+
+export default {
+	fetch: handleRequest
 }
